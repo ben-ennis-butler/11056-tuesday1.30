@@ -1,0 +1,77 @@
+body {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    padding-bottom: 2em;
+}
+h2 {
+    font-size: 1.8rem;
+    padding-bottom: 1.5em;
+}
+h3 {
+    font-size: 1.6rem;
+}
+
+p {
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+    font-size: 1.1em;
+}
+
+
+
+.wrapper {
+    display: grid;
+    
+/*    fr = fraction */
+/*    grid-template-columns: repeat(12, 1fr);*/
+    grid-template-columns: repeat(12, 1fr);
+    
+/*    first number is height, second how big it can get */
+    grid-auto-rows: minmax(100px, auto);
+    
+    grid-column-gap: 5em;
+    
+    grid-template-areas:
+        ". h h h h h h h h h h ."
+        ". . . m m m m m m . . ."
+        "f f f f f f f f f f f f";
+}
+
+.header {
+    grid-area: h;
+}
+.main {
+    grid-area: m;
+}
+.footer {
+    grid-area: f;
+}
+
+/* target screens with max width */
+@media (max-width: 500px) {
+    .header {
+        background: red;
+    }
+}
+
+/* if max width 400~ */
+@media (max-width: 27.813em) {
+/*    override my grid template */
+    .wrapper {
+        grid-template-areas:
+        "h h h h h h h h h h h h"
+        "m m m m m m m m m m m m"
+        "f f f f f f f f f f f f";
+    }
+    
+/*    this is a psuedo selector, see CSS Tricks Almanac */
+    .main p:last-of-type {
+        color: orange;
+    }
+}
+
+
